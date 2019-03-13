@@ -231,13 +231,13 @@ def import_zip(zip_file):
                 if i[-len(check_filename):]==check_filename:
                     bcp_filename = i
 
-            bcpdata = zf.read(bcp_filename)
+            bcpdata = zf.read(check_filename)
             bcpdata = bcpdata.decode('utf-8', errors="replace")
             bcpdata = bcp.convert(bcpdata)
             to_file(bcpdata, csvfilename=csv_filename, col_headers=cc_files[filename])
-            print('Converted: %s' % bcp_filename)
+            print('Converted: %s' % check_filename)
         except KeyError:
-            print('ERROR: Did not find %s in zip file' % bcp_filename)
+            print('ERROR: Did not find %s in zip file' % check_filename)
 
 def main():
     zip_file = sys.argv[1]
